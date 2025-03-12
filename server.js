@@ -44,8 +44,8 @@ async function getNextCoupon() {
 }
 
 app.get('/claim', async (req, res) => {
-  console.log("claimed" , req.ip , "ip" , req.headers['x-forwarded-for'] , " ip " , req.connection.remoteAddress)
-  const userIp = req.ip || req.headers['x-forwarded-for'] || req.connection.remoteAddress; // In production, consider headers like 'x-forwarded-for'
+  // console.log("claimed" , req.ip , "ip" , req.headers['x-forwarded-for'] , " ip " , req.connection.remoteAddress)
+  const userIp = req.headers['x-forwarded-for'];
   let cookieId = req.cookies.cookieId;
   
   if (!cookieId) {
